@@ -1,74 +1,78 @@
 public class WorkSchedule {
 
-	private List<WorkSession> workSessionList;
+	private List<WorkSession> sessions;
 
 	public WorkSchedule() {
-		// TODO - implement WorkSchedule.WorkSchedule
-		throw new UnsupportedOperationException();
+		sessions = new ArrayList<WorkSession>();
 	}
 
 	/**
 	 * 
-	 * @param day
+	 * @param session
 	 */
-	public List<WorkSession> listWorkSessions(Date day) {
-		// TODO - implement WorkSchedule.listWorkSessions
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param employee
-	 * @param day
-	 */
-	public List<WorkSession> listWorkSessions(Employee employee, Date day) {
-		// TODO - implement WorkSchedule.listWorkSessions
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param employee
-	 */
-	public List<WorkSession> listWorkSessions(Employee employee) {
-		// TODO - implement WorkSchedule.listWorkSessions
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param employeeType
-	 */
-	public List<WorkSession> listWorkSessions(EmployeeType employeeType) {
-		// TODO - implement WorkSchedule.listWorkSessions
-		throw new UnsupportedOperationException();
+	public boolean add(WorkSession session) {
+		int highId = 0;
+		for(WorkSession sess : sessions)
+		{
+			highId = sess.getId() > highId ? sess.getId() : highId;
+			if(session.getId() == sess.getId()) {
+				return false;
+			}
+		}
+		session.setId(highId+1);
+		session.add(session);
 	}
 
 	/**
 	 * 
 	 * @param id
 	 */
-	public WorkSession findSchedule(int id) {
-		// TODO - implement WorkSchedule.findSchedule
-		throw new UnsupportedOperationException();
+	public WorkSession get(int id) {
+		WorkSession out = null;
+		for(WorkSession session : sessions)
+		{
+			if(session.getId() == id) {
+				out = session;
+				break;
+			}
+		}
+		return out;
+	}
+
+	public List<WorkSession> list() {
+		return new ArrayList<WorkSession>(sessions);
 	}
 
 	/**
 	 * 
 	 * @param session
 	 */
-	public WorkSession addWorkSession(WorkSession session) {
-		// TODO - implement WorkSchedule.addWorkSession
-		throw new UnsupportedOperationException();
+	public List<WorkSession> find(WorkSession session) {
+		List<WorkSession> out = new ArrayList<WorkSession>();
+		for(WorkSession sess : sessions)
+		{
+			if(session.getId() == sess.getId()
+				|| session.getEmployee().getFirstName().equals(sess.getEmployee().getFirstName())
+				|| session.getEmployee().getLastName().equals(sess.getEmployee().getLastName())
+				|| session.getEmployee().getEmployeeType() == sess.getEmployee().getEmployeeType()) {
+				out.add(sess);
+			}
+		}
+		return out;
 	}
 
 	/**
 	 * 
 	 * @param session
 	 */
-	public void removeWorkSession(WorkSession session) {
-		// TODO - implement WorkSchedule.removeWorkSession
-		throw new UnsupportedOperationException();
+	public List<WorkSession> remove(WorkSession session) {
+		Iterator<WorkSession> it = sessions.iterator();
+		while(it.hasNext()) {
+			WorkSession sess = it.next();
+			if(session.getId() == sess.getId()) {
+				it.remove();
+			}
+		}
 	}
 
 }

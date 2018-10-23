@@ -3,6 +3,7 @@ public class Employee {
 	private int id;
 	private String firstName;
 	private String lastName;
+	private EmployeeType employeeType;
 	private int phone;
 	private String email;
 
@@ -30,6 +31,25 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
+	public EmployeeType getEmployeeType() {
+		return this.employeeType;
+	}
+
+	public void setEmployeeType(EmployeeType employeeType) {
+		this.employeeType = employeeType;
+	}
+
+	/**
+	 * 
+	 * @param employeeType
+	 */
+	public Employee(EmployeeType employeeType) {
+		id = 0;
+		firstName = "";
+		lastName = "";
+		employeeType = EmployeeType.CHEF;
+	}
+
 	public int getPhone() {
 		return this.phone;
 	}
@@ -44,15 +64,6 @@ public class Employee {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	/**
-	 * 
-	 * @param employeeType
-	 */
-	public Employee(EmployeeType employeeType) {
-		// TODO - implement Employee.Employee
-		throw new UnsupportedOperationException();
 	}
 
 }

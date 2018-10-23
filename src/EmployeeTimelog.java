@@ -1,51 +1,36 @@
-public class EmployeeTimelog {
+public class EmployeeTimeLog {
+	private int id;
+	private DateTime time;
+	private Employee employee;
+	private TimeLogType logType;
 
-	private List<EmployeeTimelogEntry> entries;
-
-	public EmployeeTimelog() {
-		// TODO - implement EmployeeTimelog.EmployeeTimelog
-		throw new UnsupportedOperationException();
+	public DateTime getTime() {
+		return this.time;
 	}
 
-	/**
-	 * 
-	 * @param employee
-	 */
-	public void checkIn(Employee employee) {
-		// TODO - implement EmployeeTimelog.checkIn
-		throw new UnsupportedOperationException();
+	public void setTime(DateTime time) {
+		this.timein = time;
 	}
 
-	/**
-	 * 
-	 * @param employee
-	 */
-	public boolean checkOut(Employee employee) {
-		// TODO - implement EmployeeTimelog.checkOut
-		throw new UnsupportedOperationException();
+	public Employee getEmployee() {
+		return this.employee;
 	}
 
-	public List<EmployeeTimelogEntry> listLog() {
-		// TODO - implement EmployeeTimelog.listLog
-		throw new UnsupportedOperationException();
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
-	/**
-	 * 
-	 * @param entry
-	 */
-	public void addEntry(EmployeeTimelogEntry entry) {
-		// TODO - implement EmployeeTimelog.addEntry
-		throw new UnsupportedOperationException();
+	public EmployeeTimeLog(Employee employee) {
+		this.employee = employee;
+		id = 0;
+		time = DateTime.now();
 	}
 
-	/**
-	 * 
-	 * @param entry
-	 */
-	public void removeEntry(EmployeeTimelogEntry entry) {
-		// TODO - implement EmployeeTimelog.removeEntry
-		throw new UnsupportedOperationException();
+	public TimeLogType getLogType() {
+		return this.logType;
 	}
 
+	public void setLogType(TimeLogType logType) {
+		this.logType = logType;
+	}
 }

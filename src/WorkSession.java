@@ -3,7 +3,7 @@ public class WorkSession {
 	private int id;
 	private DateTime from;
 	private DateTime to;
-	private List<Employee> employee;
+	private Employee employee;
 
 	public int getId() {
 		return this.id;
@@ -29,32 +29,23 @@ public class WorkSession {
 		this.to = to;
 	}
 
-	public WorkSession() {
-		// TODO - implement WorkSession.WorkSession
-		throw new UnsupportedOperationException();
+	public Employee getEmployee() {
+		return this.employee;
 	}
 
-	public List<Employee> listEmployees() {
-		// TODO - implement WorkSession.listEmployees
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param employee
-	 */
-	public void addEmployee(Employee employee) {
-		// TODO - implement WorkSession.addEmployee
-		throw new UnsupportedOperationException();
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	/**
 	 * 
 	 * @param employee
 	 */
-	public void removeEmployee(Employee employee) {
-		// TODO - implement WorkSession.removeEmployee
-		throw new UnsupportedOperationException();
+	public WorkSession(Employee employee) {
+		this.employee = employee;
+		id = 0;
+		from = DateTime.now();
+		to = DateTime.now();
 	}
 
 }

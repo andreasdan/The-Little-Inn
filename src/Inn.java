@@ -1,11 +1,15 @@
 import java.util.Scanner;
+import java.time.LocalDateTime;
 
 public class Inn {
    public static void main(String[] args)
    {
+      Staff staff = new Staff();
+      TimeLog timeLog = new TimeLog(); // Employee timestamping
+      WorkSchedule workSchedule = new WorkSchedule(); // Employee work schedule
       RoomRegister roomRegister = new RoomRegister();
       RecordRegister recordRegister = new RecordRegister();
-      
+
       //testing customers
       Customer[] customers = new Customer[3];
       customers[0] = new Customer(0, "Anders", "Andersen", 55555555, "mail@gmail.com", "adressevej 10", 2880);
@@ -16,6 +20,14 @@ public class Inn {
       roomRegister.addRoom(new Room(1, 2, 19.2, true, 289.0));
       roomRegister.addRoom(new Room(2, 3, 25.4, true, 359.0));
       roomRegister.addRoom(new Room(3, 1, 11.9, true, 189.0));
+
+
+      //testing staff
+      staff.add(new Employee(0, "John", "Brown", 63468412, "John1974@gmail.com", EmployeeType.SUPERVISOR));
+      staff.add(new Employee(0, "Jane", "Brown", 63468412, "jane1976@gmail.com", EmployeeType.RECEPTIONIST));
+      staff.add(new Employee(0, "Carl", "Carlson", 63468412, "carlc1988@gmail.com", EmployeeType.CHEF));
+      staff.add(new Employee(0, "Lenny", "Leonard", 63468412, "lennyl1988@gmail.com", EmployeeType.SERVANT));
+
       
       //scanner to read input
       Scanner scanner = new Scanner(System.in);
@@ -28,7 +40,7 @@ public class Inn {
       while (runProgram)
       {
          //read subsystem input choice
-         System.out.print("Keys:\n0 - Exit the program\n1 - Manage working hours\n2 - Manage the reception\nInput>");
+         System.out.print("Keys:\n0 - Exit the program\n1 - TimeLog\n2 - Manage working hours\n3 - Manage the reception\nInput>");
          int subSystemChoice = scanner.nextInt();
          
          if (subSystemChoice == 0)
@@ -36,11 +48,68 @@ public class Inn {
             //end program at next while check
             runProgram = false;
          }
-         else if (subSystemChoice == 1) //working hours part of the system
+         else if (subSystemChoice == 1) // time log part of the system
+         {
+            boolean timeLogChosen = true;
+            while (timeLogChosen) //makes the menu stay inside the reception loop
+            {
+               System.out.print("*** TimeLog ***\nKeys:\n0 - Exit the timelog sub system\n1 - check in\n2 - check out\n3 - List records\nInput>");
+               int timeLogChoice = scanner.nextInt();
+               if(timeLogChoice == 0) {
+                  timeLogChosen = false;
+               } else if(timeLogChoice == 1) {
+                  for(Employee emp : staff.list()) {
+                     System.out.println(emp.toString());
+                  }
+
+                  System.out.print("Chose your ID\nInput>");
+                  int empIdChosen = scanner.nextInt(); // get input
+                  Employee emp = staff.get(empIdChosen);
+
+                  if(emp != null) {
+                     timeLog.checkIn(emp);
+                     System.out.println(emp.getFirstName() +" checked in.");
+                  }
+               } else if(timeLogChoice == 2) {
+                  for(Employee emp : staff.list()) {
+                     System.out.println(emp.toString());
+                  }
+
+                  System.out.print("Chose your ID\nInput>");
+                  int empIdChosen = scanner.nextInt(); // get input
+                  Employee emp = staff.get(empIdChosen);
+
+                  if(emp != null) {
+                     timeLog.checkOut(emp);
+                     System.out.println(emp.getFirstName() +" checked out.");
+                  } else {
+
+                  }
+               } else if(timeLogChoice == 3) {
+                  for(Employee emp : staff.list()) {
+                     System.out.println(emp.toString());
+                  }
+
+                  System.out.print("Chose your ID\nInput>");
+                  int empIdChosen = scanner.nextInt(); // get input
+                  Employee emp = staff.get(empIdChosen);
+
+                  if(emp != null) {
+                     System.out.println("TimeLog for: "+ emp.getFirstName());
+                     for(EmployeeTimeLog tLog : timeLog.list(emp)) {
+                        String inOrOut = tLog.getLogType() == TimeLogType.IN ? "In" : "Out";
+                        System.out.println("id: "+ tLog.getId() +"\ttime: "+ tLog.getTime().toString() +"\ttype: "+ inOrOut);
+                     }
+                     System.out.println("");
+                  }
+               }
+            }
+         }
+         else if (subSystemChoice == 2) //working hours part of the system
          {
             //TODO: implement working hours system
          }
-         else if (subSystemChoice == 2) //reception menu
+         else if (subSystemChoice == 3) //reception menu
          {
             boolean receptionChosen = true;
             

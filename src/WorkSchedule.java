@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Iterator;
+
 public class WorkSchedule {
 
 	private List<WorkSession> sessions;
@@ -10,17 +14,16 @@ public class WorkSchedule {
 	 * 
 	 * @param session
 	 */
-	public boolean add(WorkSession session) {
+	public void add(WorkSession session) {
 		int highId = 0;
-		for(WorkSession sess : sessions)
-		{
-			highId = sess.getId() > highId ? sess.getId() : highId;
-			if(session.getId() == sess.getId()) {
-				return false;
-			}
+		try {
+			highId = sessions.get(sessions.size()-1).getId();
+		} catch(Exception e) {
+
 		}
+
 		session.setId(highId+1);
-		session.add(session);
+		sessions.add(session);
 	}
 
 	/**
@@ -51,7 +54,7 @@ public class WorkSchedule {
 		List<WorkSession> out = new ArrayList<WorkSession>();
 		for(WorkSession sess : sessions)
 		{
-			if(session.getId() == sess.getId()
+			if(session.getId() != 0 && session.getId() == sess.getId()
 				|| session.getEmployee().getFirstName().equals(sess.getEmployee().getFirstName())
 				|| session.getEmployee().getLastName().equals(sess.getEmployee().getLastName())
 				|| session.getEmployee().getEmployeeType() == sess.getEmployee().getEmployeeType()) {
@@ -65,7 +68,7 @@ public class WorkSchedule {
 	 * 
 	 * @param session
 	 */
-	public List<WorkSession> remove(WorkSession session) {
+	public void remove(WorkSession session) {
 		Iterator<WorkSession> it = sessions.iterator();
 		while(it.hasNext()) {
 			WorkSession sess = it.next();

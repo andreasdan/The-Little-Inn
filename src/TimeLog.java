@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Iterator;
 import java.time.LocalDateTime;
 
 public class TimeLog {
@@ -13,9 +16,9 @@ public class TimeLog {
 	 * @param employee
 	 */
 	public void checkIn(Employee employee) {
-		EmployeeTimeLog eTimeLog = new EmployeeTimeLog(employee);
-		eTimeLog.setTimeLogType(TimeLogType.IN);
-		log.add(eTimeLog);
+		EmployeeTimeLog timeLog = new EmployeeTimeLog(employee);
+		timeLog.setLogType(TimeLogType.IN);
+		this.add(timeLog);
 	}
 
 	/**
@@ -23,9 +26,25 @@ public class TimeLog {
 	 * @param employee
 	 */
 	public void checkOut(Employee employee) {
-		EmployeeTimeLog eTimeLog = new EmployeeTimeLog(employee);
-		eTimeLog.setTimeLogType(TimeLogType.OUT);
-		log.add(eTimeLog);
+		EmployeeTimeLog timeLog = new EmployeeTimeLog(employee);
+		timeLog.setLogType(TimeLogType.OUT);
+		this.add(timeLog);
+	}
+
+	/**
+	 * 
+	 * @param session
+	 */
+	public void add(EmployeeTimeLog timeLog) {
+		int highId = 0;
+		try {
+			highId = log.get(log.size()-1).getId();
+		} catch(Exception e) {
+
+		}
+
+		timeLog.setId(highId+1);
+		log.add(timeLog);
 	}
 
 	public List<EmployeeTimeLog> list() {
@@ -53,13 +72,16 @@ public class TimeLog {
 	 */
 	public List<EmployeeTimeLog> list(LocalDateTime from, LocalDateTime to) {
 		List<EmployeeTimeLog> out = new ArrayList<EmployeeTimeLog>();
-		Interval interval = new Interval(from, to);
+
+		// Interval not implemented yet.
+
+		/*Interval interval = new Interval(from, to);
 
 		for(EmployeeTimeLog entry : this.log) {
 			if (interval.contains(entry.getTime())) {
 				out.add(entry);
 			}
-		}
+		}*/
 		return out;
 	}
 
@@ -71,7 +93,10 @@ public class TimeLog {
 	 */
 	public List<EmployeeTimeLog> list(Employee emplyee, LocalDateTime from, LocalDateTime to) {
 		List<EmployeeTimeLog> out = new ArrayList<EmployeeTimeLog>();
-		Interval interval = new Interval(from, to);
+
+		// Interval not implemented yet.
+
+		/*Interval interval = new Interval(from, to);
 
 		for(EmployeeTimeLog entry : this.log) {
 			if (employee.getId() == entry.getEmployee().getId()
@@ -79,7 +104,8 @@ public class TimeLog {
 			{
 				out.add(entry);
 			}
-		}
+		}*/
+
 		return out;
 	}
 

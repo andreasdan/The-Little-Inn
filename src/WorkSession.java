@@ -41,23 +41,22 @@ public class WorkSession {
 
 	/**
 	 * 
-	 * @param employee
 	 */
-	public WorkSession(Employee employee) {
-		this.employee = employee;
+	public WorkSession() {
+		employee = new Employee();
 		id = 0;
-		from = new LocalDateTime();
-		to = new LocalDateTime();
+		from = LocalDateTime.now();
+		to = LocalDateTime.now();
 	}
 
 	/**
 	 * 
 	 * @param employee
 	 */
-	public WorkSession(Employee employee, LocalDateTime from, LocalDateTime to) {
+	public WorkSession(int id, Employee employee, LocalDateTime from, LocalDateTime to) {
 		this.employee = employee;
-		id = 0;
-		from = from;
-		to = to;
+		this.id = id;
+		this.from = from;
+		this.to = to;
 	}
 }

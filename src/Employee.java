@@ -35,19 +35,21 @@ public class Employee {
 		return this.employeeType;
 	}
 
-	public void setEmployeeType(EmployeeType employeeType) {
-		this.employeeType = employeeType;
+	public String getEmployeeTypeAsString() {
+		switch(getEmployeeType()) {
+			case SUPERVISOR:
+				return "Supervisor";
+			case RECEPTIONIST:
+				return "Receptionist";
+			case CHEF:
+				return "Chef";
+			default:
+				return "Servant";
+		}
 	}
 
-	/**
-	 * 
-	 * @param employeeType
-	 */
-	public Employee(EmployeeType employeeType) {
-		id = 0;
-		firstName = "";
-		lastName = "";
-		employeeType = EmployeeType.CHEF;
+	public void setEmployeeType(EmployeeType employeeType) {
+		this.employeeType = employeeType;
 	}
 
 	public int getPhone() {
@@ -66,4 +68,28 @@ public class Employee {
 		this.email = email;
 	}
 
+
+	public Employee() {
+		id = 0;
+		firstName = "";
+		lastName = "";
+		employeeType = EmployeeType.CHEF;
+	}
+
+	/**
+	 * 
+	 * @param employeeType
+	 */
+	public Employee(int id, String firstName, String lastName, int phone, String email, EmployeeType employeeType) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phone = phone;
+		this.email = email;
+		this.employeeType = employeeType;
+	}
+
+	public String toString() {
+		return "id: "+ getId() +" \tfirstName: "+ getFirstName() +" \tlastName: "+ getLastName() +" \tphone: "+ getPhone() +" \temail: "+ getEmail() +" \temployeeType: "+ getEmployeeTypeAsString();
+	}
 }

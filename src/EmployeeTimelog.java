@@ -6,12 +6,20 @@ public class EmployeeTimeLog {
 	private Employee employee;
 	private TimeLogType logType;
 
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public LocalDateTime getTime() {
 		return this.time;
 	}
 
 	public void setTime(LocalDateTime time) {
-		this.timein = time;
+		this.time = time;
 	}
 
 	public Employee getEmployee() {
@@ -22,17 +30,17 @@ public class EmployeeTimeLog {
 		this.employee = employee;
 	}
 
-	public EmployeeTimeLog(Employee employee) {
-		this.employee = employee;
-		id = 0;
-		time = new LocalDateTime();
-	}
-
 	public TimeLogType getLogType() {
 		return this.logType;
 	}
 
 	public void setLogType(TimeLogType logType) {
 		this.logType = logType;
+	}
+
+	public EmployeeTimeLog(Employee employee) {
+		this.employee = employee;
+		id = 0;
+		time = LocalDateTime.now();
 	}
 }

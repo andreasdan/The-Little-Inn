@@ -40,7 +40,7 @@ public class Inn {
       while (runProgram)
       {
          //read subsystem input choice
-         System.out.print("Keys:\n0 - Exit the program\n1 - TimeLog\n2 - Manage working hours\n3 - Manage the reception\nInput>");
+         System.out.print("Keys:\n0 - Exit the program\n1 - TimeLog\n2 - Manage the reception\n3 - Manage Staff w. working hours (to be implemented)\n4 - Manage Customers (to be implemented)\nInput>");
          int subSystemChoice = scanner.nextInt();
          
          if (subSystemChoice == 0)
@@ -105,11 +105,7 @@ public class Inn {
                }
             }
          }
-         else if (subSystemChoice == 2) //working hours part of the system
-         {
-            //TODO: implement working hours system
-         }
-         else if (subSystemChoice == 3) //reception menu
+         else if (subSystemChoice == 2) //reception menu
          {
             boolean receptionChosen = true;
             
@@ -186,6 +182,14 @@ public class Inn {
                   System.out.println("Please select either 0, 1, 2, 3, 4 or 5 to continue...");
                }
             }            
+         }
+         else if (subSystemChoice == 3) // staff w. working hours part of the system
+         {
+            //TODO: implement staff w. working hours system
+         }
+         else if (subSystemChoice == 4) // customer part of the system
+         {
+            //TODO: implement customer system
          }
          else
          {

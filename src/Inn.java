@@ -36,11 +36,11 @@ public class Inn {
             //end program at next while check
             runProgram = false;
          }
-         else if (subSystemChoice == 1)
+         else if (subSystemChoice == 1) //working hours part of the system
          {
             //TODO: implement working hours system
          }
-         else if (subSystemChoice == 2)
+         else if (subSystemChoice == 2) //reception menu
          {
             boolean receptionChosen = true;
             
@@ -49,7 +49,7 @@ public class Inn {
                System.out.print("*** Reception ***\nKeys:\n0 - Exit the reception sub system\n1 - List all rooms\n2 - List all available rooms\n3 - List all records\n4 - Rent out a room\n5 - Check-out of room\nInput>");
                int receptionChoice = scanner.nextInt();
             
-               if (receptionChoice == 0) //close and exit the program
+               if (receptionChoice == 0) //exit the reception loop and enter main loop
                {
                   receptionChosen = false;
                }

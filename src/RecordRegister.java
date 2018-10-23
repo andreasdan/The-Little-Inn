@@ -1,42 +1,28 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Date;
+
 public class RecordRegister {
 
 	private List<Record> recordsList;
 
-	public RecordRegister() {
-		// TODO - implement RecordRegister.RecordRegister
-		throw new UnsupportedOperationException();
+	public RecordRegister()
+   {
+		recordsList = new ArrayList<>();
 	}
-
+   
+   //get a list of all records
 	public List<Record> listRecords() {
-		// TODO - implement RecordRegister.listRecords
-		throw new UnsupportedOperationException();
+		return recordsList;
 	}
-
-	/**
-	 * 
-	 * @param Record
-	 */
-	public Record getRecord(int Record) {
-		// TODO - implement RecordRegister.getRecord
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param record
-	 */
+   
+   //saves record to the list collection
 	public void addRecord(Record record) {
-		// TODO - implement RecordRegister.addRecord
-		throw new UnsupportedOperationException();
+		recordsList.add(record);
 	}
-
-	/**
-	 * 
-	 * @param record
-	 */
-	public void removeRecord(Record record) {
-		// TODO - implement RecordRegister.removeRecord
-		throw new UnsupportedOperationException();
-	}
-
+   
+   //remove record at specific index
+   public void removeRecord(int index) {
+      recordsList.remove(index);
+   }
 }

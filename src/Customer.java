@@ -63,10 +63,36 @@ public class Customer {
 	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
+   
+   public Customer() {
+      this.id = -1;
+      this.firstName = "";
+      this.lastName = "";
+      this.phone = 0;
+      this.email = "";
+      this.address = "";
+      this.zipCode = 0;
+   }
 
-	public Customer() {
-		// TODO - implement Customer.Customer
-		throw new UnsupportedOperationException();
+	public Customer(int id, String firstName, String lastName, int phone, String email, String address, int zipCode) {
+		this.id = id;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.phone = phone;
+      this.email = email;
+      this.address = address;
+      this.zipCode = zipCode;
 	}
+   
+   public String toString()
+   {
+      return "ID: " + id
+            + " Firstname: " + firstName
+            + " Lastname: " + lastName
+            + " Phone nr.: " + phone
+            + " Email: " + email
+            + " Address: " + address
+            + " Zip code: " + zipCode;
+   }
 
 }

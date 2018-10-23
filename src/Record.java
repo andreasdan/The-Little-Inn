@@ -1,54 +1,60 @@
+import java.time.LocalDateTime;
+
 public class Record {
 
-	private int id;
-	private DateTime checkInDate;
-	private DateTime checkOutDate;
-	private Room room;
-	private Customer customer;
+   //private attributes
+	private LocalDateTime checkInDate;
+	private LocalDateTime checkOutDate;
+	private int roomNumber;
+	private int customerId;
 
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public DateTime getCheckInDate() {
+   //getters and setters to reach attributes
+	public LocalDateTime getCheckInDate() {
 		return this.checkInDate;
 	}
 
-	public void setCheckInDate(DateTime checkInDate) {
+	public void setCheckInDate(LocalDateTime checkInDate) {
 		this.checkInDate = checkInDate;
 	}
 
-	public DateTime getCheckOutDate() {
+	public LocalDateTime getCheckOutDate() {
 		return this.checkOutDate;
 	}
 
-	public void setCheckOutDate(DateTime checkOutDate) {
+	public void setCheckOutDate(LocalDateTime checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
 
-	public Room getRoom() {
-		return this.room;
+	public int getRoomNumber() {
+		return this.roomNumber;
 	}
 
-	public void setRoom(Room room) {
-		this.room = room;
+	public void setRoomNumber(int roomNumber) {
+		this.roomNumber = roomNumber;
 	}
 
-	public Customer getCustomer() {
-		return this.customer;
+	public int getCustomerId() {
+		return this.customerId;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomer(int customerId) {
+		this.customerId = customerId;
 	}
 
-	public Record() {
-		// TODO - implement Record.Record
-		throw new UnsupportedOperationException();
+   //record constructor must take all attributes as parameters
+	public Record(LocalDateTime checkInDate, LocalDateTime checkOutDate, int roomNumber, int customerId) {
+      this.checkInDate = checkInDate;
+      this.checkOutDate = checkOutDate;
+      this.roomNumber = roomNumber;
+      this.customerId = customerId;
 	}
+   
+   public String toString() //overrides the default toString() method
+   {
+      return "Check-in date: " + checkInDate
+            + " Check-out date: " + checkOutDate
+            + " Room nr.: " + roomNumber
+            + " Customer ID: " + customerId;
+   }
 
 }

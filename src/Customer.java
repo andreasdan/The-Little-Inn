@@ -1,5 +1,6 @@
 public class Customer {
 
+   //private attributes
 	private int id;
 	private String firstName;
 	private String lastName;
@@ -8,6 +9,7 @@ public class Customer {
 	private String address;
 	private int zipCode;
 
+   //getters and setters to reach private attributes
 	public int getId() {
 		return this.id;
 	}
@@ -64,6 +66,7 @@ public class Customer {
 		this.zipCode = zipCode;
 	}
    
+   //default constructor
    public Customer() {
       this.id = -1;
       this.firstName = "";
@@ -74,6 +77,7 @@ public class Customer {
       this.zipCode = 0;
    }
 
+   //constructor with parameters
 	public Customer(int id, String firstName, String lastName, int phone, String email, String address, int zipCode) {
 		this.id = id;
       this.firstName = firstName;
@@ -84,7 +88,7 @@ public class Customer {
       this.zipCode = zipCode;
 	}
    
-   public String toString()
+   public String toString() //overrides default toString() method
    {
       return "ID: " + id
             + " Firstname: " + firstName

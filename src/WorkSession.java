@@ -1,8 +1,10 @@
+import java.time.LocalDateTime;
+
 public class WorkSession {
 
 	private int id;
-	private DateTime from;
-	private DateTime to;
+	private LocalDateTime from;
+	private LocalDateTime to;
 	private Employee employee;
 
 	public int getId() {
@@ -13,19 +15,19 @@ public class WorkSession {
 		this.id = id;
 	}
 
-	public DateTime getFrom() {
+	public LocalDateTime getFrom() {
 		return this.from;
 	}
 
-	public void setFrom(DateTime from) {
+	public void setFrom(LocalDateTime from) {
 		this.from = from;
 	}
 
-	public DateTime getTo() {
+	public LocalDateTime getTo() {
 		return this.to;
 	}
 
-	public void setTo(DateTime to) {
+	public void setTo(LocalDateTime to) {
 		this.to = to;
 	}
 
@@ -44,8 +46,18 @@ public class WorkSession {
 	public WorkSession(Employee employee) {
 		this.employee = employee;
 		id = 0;
-		from = DateTime.now();
-		to = DateTime.now();
+		from = new LocalDateTime();
+		to = new LocalDateTime();
 	}
 
+	/**
+	 * 
+	 * @param employee
+	 */
+	public WorkSession(Employee employee, LocalDateTime from, LocalDateTime to) {
+		this.employee = employee;
+		id = 0;
+		from = from;
+		to = to;
+	}
 }

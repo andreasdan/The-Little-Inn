@@ -1,14 +1,16 @@
+import java.time.LocalDateTime;
+
 public class EmployeeTimeLog {
 	private int id;
-	private DateTime time;
+	private LocalDateTime time;
 	private Employee employee;
 	private TimeLogType logType;
 
-	public DateTime getTime() {
+	public LocalDateTime getTime() {
 		return this.time;
 	}
 
-	public void setTime(DateTime time) {
+	public void setTime(LocalDateTime time) {
 		this.timein = time;
 	}
 
@@ -23,7 +25,7 @@ public class EmployeeTimeLog {
 	public EmployeeTimeLog(Employee employee) {
 		this.employee = employee;
 		id = 0;
-		time = DateTime.now();
+		time = new LocalDateTime();
 	}
 
 	public TimeLogType getLogType() {

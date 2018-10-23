@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+
 public class TimeLog {
 
 	private List<EmployeeTimeLog> log;
@@ -49,13 +51,12 @@ public class TimeLog {
 	 * @param from
 	 * @param to
 	 */
-	public List<EmployeeTimeLog> list(DateTime from, DateTime to) {
+	public List<EmployeeTimeLog> list(LocalDateTime from, LocalDateTime to) {
 		List<EmployeeTimeLog> out = new ArrayList<EmployeeTimeLog>();
-		Interval interval = new Interval(new DateTime(startDate), 
-			new DateTime(endDate));
+		Interval interval = new Interval(from, to);
 
 		for(EmployeeTimeLog entry : this.log) {
-			if (interval.contains(new DateTime(entry.getTime()))) {
+			if (interval.contains(entry.getTime())) {
 				out.add(entry);
 			}
 		}
@@ -68,14 +69,13 @@ public class TimeLog {
 	 * @param from
 	 * @param to
 	 */
-	public List<EmployeeTimeLog> list(Employee emplyee, DateTime from, DateTime to) {
+	public List<EmployeeTimeLog> list(Employee emplyee, LocalDateTime from, LocalDateTime to) {
 		List<EmployeeTimeLog> out = new ArrayList<EmployeeTimeLog>();
-		Interval interval = new Interval(new DateTime(startDate), 
-			new DateTime(endDate));
+		Interval interval = new Interval(from, to);
 
 		for(EmployeeTimeLog entry : this.log) {
 			if (employee.getId() == entry.getEmployee().getId()
-				&& interval.contains(new DateTime(entry.getTime())))
+				&& interval.contains(entry.getTime()))
 			{
 				out.add(entry);
 			}

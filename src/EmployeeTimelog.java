@@ -1,6 +1,7 @@
 import java.time.LocalDateTime;
 
-public class EmployeeTimeLog {
+public class EmployeeTimeLog
+{
 	private int id;
 	private LocalDateTime time;
 	private Employee employee;

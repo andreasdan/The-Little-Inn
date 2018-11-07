@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 public class Inn {
    public static void main(String[] args)
    {
-      Staff staff = new Staff();
-      TimeLog timeLog = new TimeLog(); // Employee timestamping
-      WorkSchedule workSchedule = new WorkSchedule(); // Employee work schedule
-      RoomRegister roomRegister = new RoomRegister();
-      RecordRegister recordRegister = new RecordRegister();
+      Staff staff = new Staff();                            // employees
+      TimeLog timeLog = new TimeLog();                      // employee timestamping
+      WorkSchedule workSchedule = new WorkSchedule();       // employee work schedule
+      RoomRegister roomRegister = new RoomRegister();       // rooms
+      RecordRegister recordRegister = new RecordRegister(); // room reservations
 
       //testing customers
       Customer[] customers = new Customer[3];

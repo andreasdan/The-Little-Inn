@@ -36,16 +36,7 @@ public class Employee {
 	}
 
 	public String getEmployeeTypeAsString() {
-		switch(getEmployeeType()) {
-			case SUPERVISOR:
-				return "Supervisor";
-			case RECEPTIONIST:
-				return "Receptionist";
-			case CHEF:
-				return "Chef";
-			default:
-				return "Servant";
-		}
+		return this.employeeType.toString();
 	}
 
 	public void setEmployeeType(EmployeeType employeeType) {
@@ -90,6 +81,6 @@ public class Employee {
 	}
 
 	public String toString() {
-		return "id: "+ getId() +" \tfirstName: "+ getFirstName() +" \tlastName: "+ getLastName() +" \tphone: "+ getPhone() +" \temail: "+ getEmail() +" \temployeeType: "+ getEmployeeTypeAsString();
+		return "id: "+ getId() +" \tfirstName: "+ getFirstName() +" \tlastName: "+ getLastName() +" \tphone: "+ getPhone() +" \temail: "+ getEmail() +" \temployeeType: "+ getEmployeeType().toString();
 	}
 }
